@@ -1,0 +1,69 @@
+group 'com.thn929'
+version '1.0-SNAPSHOT'
+
+//sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+ext.kafkaVersion = '0.11.0.1'
+
+dependencies {
+    // Spring
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.7.RELEASE'
+    compile 'org.springframework.boot:spring-boot-actuator:1.5.7.RELEASE'
+
+    compile fileTree(dir: 'libs', include: '*jar')
+
+    // Kafka
+//    compile("org.apache.kafka:kafka_2.11:${kafkaVersion}") {
+//        exclude group: 'log4j'
+//        exclude group: 'org.slf4j'
+//    }
+//    compile("org.apache.kafka:kafka-streams:${kafkaVersion}") {
+//        exclude group: 'log4j'
+//        exclude group: 'org.slf4j'
+//    }
+//    compile("org.apache.kafka:kafka-clients:${kafkaVersion}") {
+//        exclude group: 'log4j'
+//        exclude group: 'org.slf4j'
+//    }
+
+    // Misc
+    compile 'org.apache.commons:commons-io:1.3.2'
+    compile 'org.apache.commons:commons-collections4:4.1'
+    compile 'org.apache.commons:commons-lang3:3.6'
+
+    compile 'com.jayway.jsonpath:json-path:2.4.0'
+    compile 'org.json:json:20170516'
+
+    compile 'org.projectlombok:lombok:1.16.18'
+
+
+    // Test
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0'
+//    testCompile("org.apache.kafka:kafka-streams:${kafkaVersion}:test") {
+//        exclude group: 'log4j'
+//        exclude group: 'org.slf4j'
+//    }
+//    testCompile("org.apache.kafka:kafka-clients:${kafkaVersion}:test") {
+//        exclude group: 'log4j'
+//        exclude group: 'org.slf4j'
+//    }
+
+}
