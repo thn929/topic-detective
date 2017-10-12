@@ -1,5 +1,7 @@
 package com.thn929;
 
+import com.thn929.dao.ReadOnlyKeyValueStoreDao;
+import com.thn929.dao.StoreDao;
 import com.thn929.topology.BasicTopologyBuilder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,10 @@ public class TopicDetectiveConfig {
         return new KafkaStreams(new BasicTopologyBuilder().build(topics, maxCacheSize), streamsConfig());
     }
 
+    @Bean
+    public StoreDao storeDao() {
+        return new ReadOnlyKeyValueStoreDao(streams());
+    }
 
     @Bean
     public StreamsConfig streamsConfig() {
